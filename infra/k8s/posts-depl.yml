@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+
+# specifications
+# replicas are number of instances of images
+# Before deployment Pods must be created. 
+# selector is going to match the Pod which is created  deployment.
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          image: chetanhebsur/posts:0.0.1
